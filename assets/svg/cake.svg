@@ -1,0 +1,45 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cakeBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#353B48"/>
+      <stop offset="100%" stop-color="#1E2330"/>
+    </linearGradient>
+    <linearGradient id="cakeFrosting" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="50%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="50%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <filter id="flameGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Cake Base Tier -->
+  <rect x="20" y="65" width="80" height="40" rx="8" fill="url(#cakeBase)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <path d="M20 75 Q 30 83, 40 75 T 60 75 T 80 75 T 100 75 V 65 H 20 Z" fill="url(#cakeFrosting)" opacity="0.85"/>
+
+  <!-- Cake Top Tier -->
+  <rect x="35" y="38" width="50" height="30" rx="6" fill="url(#cakeBase)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <path d="M35 46 Q 43 52, 50 46 T 65 46 T 85 46 V 38 H 35 Z" fill="url(#cakeFrosting)"/>
+
+  <!-- Decorative Pearls -->
+  <circle cx="30" cy="95" r="2.5" fill="#FBBF24"/>
+  <circle cx="45" cy="95" r="2.5" fill="#F472B6"/>
+  <circle cx="60" cy="95" r="2.5" fill="#38BDF8"/>
+  <circle cx="75" cy="95" r="2.5" fill="#A78BFA"/>
+  <circle cx="90" cy="95" r="2.5" fill="#FBBF24"/>
+
+  <!-- Candle -->
+  <rect x="58" y="18" width="4" height="20" rx="2" fill="#FBBF24"/>
+  <!-- Candle Flame -->
+  <path d="M60 6 C56 12, 57 18, 60 18 C63 18, 64 12, 60 6 Z" fill="url(#flameGrad)" filter="url(#flameGlow)"/>
+</svg>

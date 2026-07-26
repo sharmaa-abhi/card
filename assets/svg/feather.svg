@@ -1,0 +1,10 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="featherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+  <path d="M38 6 C28 6 14 18 10 32 L8 40 L16 38 C30 34 42 20 42 10 Z" fill="url(#featherGrad)" stroke="#FEF3C7" stroke-width="1.5"/>
+  <path d="M10 38 L36 12" stroke="#FFF" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

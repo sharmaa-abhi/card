@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="crownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+  <path d="M6 38 H42 V32 L36 14 L24 24 L12 14 L6 32 V38 Z" fill="url(#crownGrad)" stroke="#FEF3C7" stroke-width="1.5" stroke-linejoin="round"/>
+  <circle cx="12" cy="12" r="3" fill="#FBBF24"/>
+  <circle cx="24" cy="8" r="3.5" fill="#38BDF8"/>
+  <circle cx="36" cy="12" r="3" fill="#FBBF24"/>
+  <rect x="10" y="34" width="28" height="3" rx="1.5" fill="#FEF3C7" opacity="0.6"/>
+</svg>

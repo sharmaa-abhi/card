@@ -1,0 +1,10 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#92400E"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 4 L38 12 V24 C38 34 24 44 24 44 C24 44 10 34 10 24 V12 L24 4 Z" fill="url(#crestGrad)" stroke="#FEF3C7" stroke-width="1.5"/>
+  <path d="M24 14 L27 21 L34 22 L29 27 L30 34 L24 30 L18 34 L19 27 L14 22 L21 21 Z" fill="#FEF3C7"/>
+</svg>

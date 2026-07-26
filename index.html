@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Magic — Premium Birthday Poster & Card Generator</title>
+  <meta name="description" content="Generate luxury matte metallic birthday posters, heartfelt wishes, Hindi/Hinglish shayari, and motivational quotes instantly.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Multi-Layer Background -->
+  <div class="bg-canvas">
+    <div class="bg-blob bg-blob--purple"></div>
+    <div class="bg-blob bg-blob--blue"></div>
+    <div class="bg-blob bg-blob--pink"></div>
+  </div>
+
+  <!-- Particle Effect Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Confetti Container -->
+  <div id="confetti-container" class="confetti-container"></div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toast-message">Link copied to clipboard!</span>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Crafting luxury cards...</div>
+  </div>
+
+  <!-- Main Page Container -->
+  <div class="page-wrap">
+
+    <!-- ==========================================
+         LOGIN / FORM PAGE
+         ========================================== -->
+    <main id="login-page" class="login-page">
+      
+      <!-- Left Hero (Desktop Split Layout - 55%) -->
+      <div class="login-hero">
+        <div class="login-hero__scene">
+          <!-- Floating Balloon SVGs -->
+          <img src="assets/svg/balloon.svg" class="hero-element hero-balloon-svg hero-balloon--1" alt="Balloon" />
+          <img src="assets/svg/balloon.svg" class="hero-element hero-balloon-svg hero-balloon--2" alt="Balloon" />
+          <img src="assets/svg/balloon.svg" class="hero-element hero-balloon-svg hero-balloon--3" alt="Balloon" />
+          <img src="assets/svg/balloon.svg" class="hero-element hero-balloon-svg hero-balloon--4" alt="Balloon" />
+
+          <!-- Birthday Cake SVG -->
+          <img src="assets/svg/cake.svg" class="hero-element hero-cake-svg" alt="Birthday Cake" />
+
+          <!-- Gift Box SVGs -->
+          <img src="assets/svg/gift.svg" class="hero-element hero-gift-svg hero-gift-svg--1" alt="Gift" />
+          <img src="assets/svg/gift.svg" class="hero-element hero-gift-svg hero-gift-svg--2" alt="Gift" />
+
+          <!-- Twinkling Stars -->
+          <div class="hero-element hero-star hero-star--1"></div>
+          <div class="hero-element hero-star hero-star--2"></div>
+          <div class="hero-element hero-star hero-star--3"></div>
+          <div class="hero-element hero-star hero-star--4"></div>
+          <div class="hero-element hero-star hero-star--5"></div>
+
+          <!-- Confetti -->
+          <div class="hero-element hero-confetti hero-confetti--1"></div>
+          <div class="hero-element hero-confetti hero-confetti--2"></div>
+          <div class="hero-element hero-confetti hero-confetti--3"></div>
+          <div class="hero-element hero-confetti hero-confetti--4"></div>
+        </div>
+
+        <div class="login-hero__heading">
+          <h1>Craft Extraordinary <br><span class="gradient-text">Birthday Memories</span></h1>
+          <p>Generate bespoke, luxury matte metallic cards and posters crafted with sleek SaaS aesthetics.</p>
+        </div>
+      </div>
+
+      <!-- Right Login Form (45% on Desktop, Full Width Mobile) -->
+      <div class="login-panel">
+        
+        <!-- Mobile Compact Header (Shown only on Mobile <900px) -->
+        <div class="mobile-hero">
+          <div class="mobile-hero__badge">
+            <img src="assets/svg/cake.svg" class="mobile-hero__icon" alt="Birthday Cake" />
+            <span class="gradient-text">Birthday Generator</span>
+          </div>
+          <h1 class="mobile-hero__title">Create Birthday Magic ✨</h1>
+          <p class="mobile-hero__subtitle">Generate luxury matte metallic cards in seconds.</p>
+        </div>
+
+        <div class="glass-card">
+          <div class="glass-card__header desktop-only-header">
+            <h2>Create Birthday Magic ✨</h2>
+            <p>Create beautiful birthday posters in seconds.</p>
+          </div>
+
+          <form id="birthday-form">
+            <!-- Recipient Name -->
+            <div class="form-group">
+              <label for="name">Recipient Name</label>
+              <input type="text" id="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="off">
+            </div>
+
+            <!-- Gender & Turning Age (Grid) -->
+            <div class="form-row">
+              <div class="form-group">
+                <label>Gender</label>
+                <div class="gender-group">
+                  <div class="gender-option">
+                    <input type="radio" id="gender-male" name="gender" value="Male" checked>
+                    <label for="gender-male">Male</label>
+                  </div>
+                  <div class="gender-option">
+                    <input type="radio" id="gender-female" name="gender" value="Female">
+                    <label for="gender-female">Female</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="age">Turning Age</label>
+                <input type="number" id="age" class="form-input" min="1" max="120" placeholder="e.g. 25" required>
+              </div>
+            </div>
+
+            <!-- Birthday Date -->
+            <div class="form-group">
+              <label for="date">Birthday Date</label>
+              <input type="date" id="date" class="form-input" required>
+            </div>
+
+            <!-- Selectable Chips for Card Quantity -->
+            <div class="form-group">
+              <label>Number of Cards</label>
+              <div class="chips-group" id="chips-group">
+                <div class="chip active" data-value="4">4</div>
+                <div class="chip" data-value="5">5</div>
+                <div class="chip" data-value="6">6</div>
+                <div class="chip" data-value="7">7</div>
+                <div class="chip" data-value="8">8</div>
+              </div>
+              <input type="hidden" id="card-count" value="4">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-primary">
+              <span>Generate Birthday Cards</span>
+              <span class="btn-icon">✨</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==========================================
+         RESULTS PAGE
+         ========================================== -->
+    <div id="results-page" class="results-page">
+      <div class="container">
+        
+        <!-- Header -->
+        <header class="results-header">
+          <div class="results-header__badge">
+            <span>🎉</span>
+            <span id="badge-text">Luxury Card Collection</span>
+          </div>
+          <h1 id="results-title">Happy Birthday, <span id="recipient-display" class="gradient-text">Alex</span>!</h1>
+          <p id="results-subtitle">Turning <span id="age-display">25</span> on <span id="date-display">October 14</span>. Tap or hover cards to flip and discover your custom wishes.</p>
+        </header>
+
+        <!-- Actions -->
+        <div class="results-actions">
+          <button id="btn-copy-link" class="btn-secondary btn-copy-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy Shareable Link</span>
+          </button>
+          <button id="btn-new-card" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Create Another Card</span>
+          </button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div id="cards-grid" class="cards-grid">
+          <!-- Dynamic Cards will be rendered here by script.js -->
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
