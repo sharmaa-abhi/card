@@ -86,6 +86,90 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 input, select { font-family: inherit; }
 img { max-width: 100%; display: block; }
 
+/* ── Top Navigation Bar ──────────────────────────────── */
+.navbar {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.2s ease;
+}
+
+.navbar__brand:hover {
+  transform: translateY(-1px);
+}
+
+.navbar__logo {
+  height: 40px;
+  width: 40px;
+  display: block;
+}
+
+.navbar__title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.form-header__logo {
+  height: 46px;
+  width: auto;
+  margin: 0 auto var(--space-xs) auto;
+  display: block;
+}
+
+.mobile-hero__logo {
+  height: 42px;
+  width: auto;
+  margin: 0 auto var(--space-xs) auto;
+  display: block;
+}
+
+.badge-logo-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navbar__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.navbar__badge-icon {
+  width: 18px;
+  height: 18px;
+}
+
 /* ========================================================
    5-LAYER PREMIUM DARK BACKGROUND SYSTEM
    Inspired by Apple · Linear · Vercel · Notion Dark
