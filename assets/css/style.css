@@ -922,6 +922,31 @@ select.form-input option {
   z-index: 5;
 }
 
+.card-shuffle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  margin: 12px auto 0 auto;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--cyan);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  position: relative;
+  z-index: 10;
+}
+
+.card-shuffle-btn:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--cyan);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
 /* ── Confetti System ─────────────────────────────────── */
 .confetti-container {
   position: fixed;
@@ -1089,25 +1114,53 @@ select.form-input option {
 }
 
 @media (max-width: 767px) {
+  /* Tap highlight & outline fix for touch devices */
+  button, input, select, .metal-card, .chip, .gender-option label {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent font scaling auto-zoom on iOS Safari inputs */
+  .form-input, select.form-input {
+    font-size: 16px !important;
+  }
+
   .container {
     padding: 0 var(--space-md);
+  }
+
+  /* Page Wrapper Padding */
+  .page-wrap {
+    padding: var(--space-xs) 0;
   }
 
   /* Form & Page Padding */
   .login-panel {
     flex: 1;
+    width: 100%;
     flex-direction: column;
-    padding: var(--space-xl) var(--space-sm);
+    padding: var(--space-md) var(--space-xs);
+    justify-content: center;
   }
 
   .glass-card {
     max-width: 100%;
     padding: var(--space-xl) var(--space-md);
     border-radius: var(--radius-lg);
+    margin: 0 auto;
   }
 
-  .glass-card__header h2 {
-    font-size: 1.5rem;
+  .mobile-hero {
+    margin-bottom: var(--space-xl);
+    padding: 0 var(--space-xs);
+  }
+
+  .mobile-hero__title {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .mobile-hero__subtitle {
+    font-size: 0.95rem;
   }
 
   .form-row {
@@ -1117,35 +1170,47 @@ select.form-input option {
 
   /* Mobile Chips Touch Area */
   .chips-group {
-    gap: 6px;
+    gap: 8px;
+    flex-wrap: nowrap;
   }
   .chip {
     height: 48px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    height: 54px;
+    font-size: 1rem;
+    margin-top: var(--space-sm);
   }
 
   /* Results Header on Mobile */
   .results-page {
-    padding: var(--space-xl) 0;
+    padding: var(--space-xl) 0 var(--space-2xl) 0;
   }
 
   .results-header {
     margin-bottom: var(--space-xl);
+    padding: 0 var(--space-xs);
   }
 
   .results-header h1 {
     font-size: 2rem;
+    line-height: 1.2;
   }
 
   .results-header p {
     font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   /* Stack Action Buttons on Mobile */
   .results-actions {
     flex-direction: column;
     width: 100%;
-    gap: var(--space-sm);
+    gap: 10px;
     margin-bottom: var(--space-xl);
   }
 
@@ -1153,24 +1218,96 @@ select.form-input option {
     width: 100%;
     justify-content: center;
     height: 52px;
+    font-size: 0.95rem;
+    border-radius: var(--radius-md);
   }
 
   /* 1-Column Cards Grid on Mobile */
   .cards-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
   }
 
   .metal-card, .metal-card__inner {
-    min-height: 390px;
+    min-height: 420px;
   }
 
   .metal-card__face {
-    padding: var(--space-lg);
+    padding: var(--space-xl) var(--space-lg);
   }
 
   .card-front__title {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
+    line-height: 1.3;
+  }
+
+  .card-front__subtitle {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .card-back__title {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    margin-bottom: var(--space-md);
+  }
+
+  .card-back__message {
+    font-size: 0.92rem;
+    line-height: 1.75;
+    padding: 0 var(--space-xs);
+  }
+
+  .card-back__divider {
+    margin: var(--space-md) auto;
+  }
+
+  .card-back__from {
+    font-size: 0.8rem;
+  }
+
+  .card-shuffle-btn {
+    margin: 10px auto 0 auto;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  .card-back__flip-hint {
+    position: absolute;
+    bottom: 14px;
+    right: 18px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  /* Mobile Toast */
+  .toast {
+    bottom: 20px;
+    width: calc(100% - 32px);
+    max-width: 380px;
+    padding: var(--space-md);
+    justify-content: center;
+    text-align: center;
+    font-size: 0.88rem;
+  }
+}
+
+/* ── Small Mobile Screens (<360px) ────────────────────── */
+@media (max-width: 360px) {
+  .chips-group {
+    gap: 4px;
+  }
+  .chip {
+    height: 44px;
+    font-size: 0.85rem;
+  }
+  .mobile-hero__title {
+    font-size: 1.6rem;
+  }
+  .results-header h1 {
+    font-size: 1.75rem;
   }
 }
 

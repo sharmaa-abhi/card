@@ -1,22 +1,24 @@
 /* ========================================================
    BIRTHDAY POSTER & CARD GENERATOR — SCRIPT.JS
    Vanilla JS (ES6) · Premium UI/UX & Motion
+   Connected to Random Shayari System (shayari.js)
    ======================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── DOM References ──────────────────────────────────── */
-  const form            = document.getElementById('birthday-form');
-  const loginPage       = document.getElementById('login-page');
-  const resultsPage     = document.getElementById('results-page');
-  const cardsGrid       = document.getElementById('cards-grid');
-  const chipsGroup      = document.getElementById('chips-group');
-  const cardCountInput  = document.getElementById('card-count');
-  const toast           = document.getElementById('toast');
-  const toastMessage    = document.getElementById('toast-message');
-  const loadingOverlay  = document.getElementById('loading-overlay');
-  const btnCopyLink     = document.getElementById('btn-copy-link');
-  const btnNewCard      = document.getElementById('btn-new-card');
+  const form                 = document.getElementById('birthday-form');
+  const loginPage            = document.getElementById('login-page');
+  const resultsPage          = document.getElementById('results-page');
+  const cardsGrid            = document.getElementById('cards-grid');
+  const chipsGroup           = document.getElementById('chips-group');
+  const cardCountInput       = document.getElementById('card-count');
+  const toast                = document.getElementById('toast');
+  const toastMessage         = document.getElementById('toast-message');
+  const loadingOverlay       = document.getElementById('loading-overlay');
+  const btnCopyLink          = document.getElementById('btn-copy-link');
+  const btnNewCard           = document.getElementById('btn-new-card');
+  const btnRandomizeShayari  = document.getElementById('btn-randomize-shayari');
 
   // Display fields
   const recipientDisplay = document.getElementById('recipient-display');
@@ -145,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--hero',
       stripeClass: 'card-accent-stripe--cyan',
       svgIcon: 'assets/svg/crown.svg',
+      category: 'Dua',
       getFrontTitle: (name, age) => `${name} turns ${age}!`,
       getFrontSubtitle: (name, age, date) => `Celebrating an extraordinary milestone on ${date}. A legacy of excellence, style, and unmatched brilliance.`,
       getBackTitle: () => `The Milestone Legacy`,
-      getBackMessage: (name, age) => `To ${name}, on your ${age}th birthday: May your coming year be as distinguished, bold, and luminous as your spirit. Here is to breaking barriers and defining greatness.`,
     },
     {
       id: 2,
@@ -157,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--heart',
       stripeClass: 'card-accent-stripe--pink',
       svgIcon: 'assets/svg/heart.svg',
+      category: 'Mohabbat',
       getFrontTitle: (name) => `Warmest Wishes for ${name}`,
       getFrontSubtitle: () => `May your day be filled with quiet joy, genuine laughter, and the warmth of those who cherish you most.`,
       getBackTitle: () => `A Heartfelt Note`,
-      getBackMessage: (name) => `Wishing ${name} a year rich with happiness, calm moments, and deep connections. Thank you for being a constant light in the lives of everyone around you.`,
     },
     {
       id: 3,
@@ -169,10 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--hindi',
       stripeClass: 'card-accent-stripe--gold',
       svgIcon: 'assets/svg/feather.svg',
+      category: 'Dosti',
       getFrontTitle: (name) => `जन्मदिन मुबारक ${name}`,
       getFrontSubtitle: () => `दुआ है कि कामयाबी आपके कदम चूमे और खुशियां सदा आपके आंगन में रहे।`,
-      getBackTitle: () => `विशेष शायरी`,
-      getBackMessage: (name) => `फूलों की सुगंध से महके आपका जीवन,\nतारों की चमक से रोशन हो हर एक पल।\nजन्मदिन की ढेरों शुभकामनाएं ${name},\nमुस्कुराते रहो तुम हर आज और कल।`,
+      getBackTitle: () => `विशेष हिंदी शायरी`,
     },
     {
       id: 4,
@@ -181,10 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--hinglish',
       stripeClass: 'card-accent-stripe--purple',
       svgIcon: 'assets/svg/sparkle.svg',
+      category: 'Special',
       getFrontTitle: (name) => `Happy B'day ${name}!`,
       getFrontSubtitle: () => `Khushiyon ka fever, success ka dose — May your year be completely epic!`,
       getBackTitle: () => `Special Vibes For You`,
-      getBackMessage: (name) => `Tere birthday pe yeh wish hai hamari,\nHar din ho super, har raat ho pyari.\nSuccess mile tujhe life mein itni,\nKi Duniya dekhe personality tumhari! Happy Birthday ${name}!`,
     },
     {
       id: 5,
@@ -193,10 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--funny',
       stripeClass: 'card-accent-stripe--green',
       svgIcon: 'assets/svg/laughing.svg',
+      category: 'Mazaak',
       getFrontTitle: (name, age) => `${name} is ${age} & Vintage!`,
       getFrontSubtitle: () => `Another year older, wiser... or at least better at pretending to be an adult.`,
       getBackTitle: () => `Official Age Notice`,
-      getBackMessage: (name, age) => `Congratulations ${name}! You have officially reached age ${age}, where your back goes out more than you do. Don’t count the candles, just enjoy the cake!`,
     },
     {
       id: 6,
@@ -205,10 +207,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--motivational',
       stripeClass: 'card-accent-stripe--cyan',
       svgIcon: 'assets/svg/rocket.svg',
+      category: 'Blessings',
       getFrontTitle: (name) => `Rise & Conquer, ${name}`,
       getFrontSubtitle: (name, age) => `Year ${age} is not just another year—it is your next massive launchpad.`,
       getBackTitle: () => `The Horizon Awaits`,
-      getBackMessage: (name) => `To ${name}: Greatness isn’t inherited; it’s forged every single day. Embrace the challenges, own your trajectory, and make this chapter your strongest victory yet.`,
     },
     {
       id: 7,
@@ -217,10 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--royal',
       stripeClass: 'card-accent-stripe--gold',
       svgIcon: 'assets/svg/royal-crest.svg',
+      category: 'Dua',
       getFrontTitle: (name) => `Royal Salute to ${name}`,
       getFrontSubtitle: () => `Commanding respect, grace, and elegance in every endeavor.`,
       getBackTitle: () => `By Royal Decree`,
-      getBackMessage: (name) => `On this auspicious day, we honor ${name}. May your reign of success continue with sovereign dignity, supreme strength, and unmatched prestige.`,
     },
     {
       id: 8,
@@ -229,10 +231,10 @@ document.addEventListener('DOMContentLoaded', () => {
       tagClass: 'card-tag--luxury',
       stripeClass: 'card-accent-stripe--pink',
       svgIcon: 'assets/svg/diamond.svg',
+      category: 'Special',
       getFrontTitle: (name) => `${name} · Rare & Luminous`,
       getFrontSubtitle: () => `Crafted like fine diamond cut work—unrivaled, timeless, and pristine.`,
       getBackTitle: () => `Exquisite Celebration`,
-      getBackMessage: (name) => `Happy Birthday ${name}. Like the finest matte platinum, your charm and character endure with silent luxury. May this new year bring brilliance to your world.`,
     }
   ];
 
@@ -249,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ========================================================
-     RENDER CARDS GENERATOR
+     RENDER CARDS GENERATOR (RANDOM SHAYARI CONNECTED)
      ======================================================== */
   function generateCards(data) {
     const { name, gender, age, date, count } = data;
@@ -271,10 +273,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const cardEl = document.createElement('div');
       cardEl.className = 'metal-card';
 
-      const frontTitle    = tpl.getFrontTitle(name, age);
-      const frontSub      = tpl.getFrontSubtitle(name, age, formattedDate);
-      const backTitle     = tpl.getBackTitle();
-      const backMsg       = tpl.getBackMessage(name, age).replace(/\n/g, '<br>');
+      const frontTitle = tpl.getFrontTitle(name, age);
+      const frontSub   = tpl.getFrontSubtitle(name, age, formattedDate);
+      
+      // Fetch dynamic random shayari from shayari.js
+      let backTitle = tpl.getBackTitle();
+      let backMsgText = "";
+
+      if (typeof getRandomShayari === 'function') {
+        const shayariObj = getRandomShayari(tpl.category);
+        if (shayariObj) {
+          if (shayariObj.wish) backTitle = shayariObj.wish;
+          backMsgText = shayariObj.text;
+        }
+      }
+
+      // Fallback if shayari function is unavailable
+      if (!backMsgText) {
+        backMsgText = `To ${name}: May your ${age}th year bring endless happiness, health, and unmatched success!`;
+      }
+
+      const backMsgFormatted = backMsgText.replace(/\n/g, '<br>');
 
       cardEl.innerHTML = `
         <div class="metal-card__inner">
@@ -296,15 +315,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="card-accent-stripe ${tpl.stripeClass}"></div>
             <div class="card-tag ${tpl.tagClass}">${tpl.tag}</div>
             <h4 class="card-back__title">${backTitle}</h4>
-            <p class="card-back__message">${backMsg}</p>
+            <p class="card-back__message">${backMsgFormatted}</p>
             <div class="card-back__divider"></div>
             <div class="card-back__from">Crafted with ♥ for ${name}</div>
+            <button class="card-shuffle-btn" type="button">🔀 New Shayari</button>
+            <span class="card-back__flip-hint">Flip back ↺</span>
           </div>
         </div>
       `;
 
-      // 3D Flip Card Handler (Mobile/Tablet/Desktop click)
-      cardEl.addEventListener('click', () => {
+      // 3D Flip Card Handler
+      cardEl.addEventListener('click', (e) => {
+        // Ignore flip if shuffle button was clicked
+        if (e.target.closest('.card-shuffle-btn')) return;
+
         const isFlipped = cardEl.classList.contains('flipped');
 
         // Close ALL other flipped cards so only one card remains flipped!
@@ -322,6 +346,34 @@ document.addEventListener('DOMContentLoaded', () => {
           triggerConfetti();
         }
       });
+
+      // Individual Card Shuffle Button Handler
+      const shuffleBtn = cardEl.querySelector('.card-shuffle-btn');
+      if (shuffleBtn) {
+        shuffleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (typeof getRandomShayari === 'function') {
+            const newShayari = getRandomShayari();
+            const msgEl = cardEl.querySelector('.card-back__message');
+            const titleEl = cardEl.querySelector('.card-back__title');
+            
+            if (msgEl) {
+              msgEl.style.opacity = '0';
+              msgEl.style.transform = 'translateY(6px)';
+
+              setTimeout(() => {
+                if (newShayari.wish && titleEl) titleEl.textContent = newShayari.wish;
+                msgEl.innerHTML = newShayari.text.replace(/\n/g, '<br>');
+                msgEl.style.transition = 'all 0.3s ease';
+                msgEl.style.opacity = '1';
+                msgEl.style.transform = 'translateY(0)';
+                showToast('Connected new random shayari to poster! ✨');
+                triggerConfetti();
+              }, 200);
+            }
+          }
+        });
+      }
 
       cardsGrid.appendChild(cardEl);
     });
@@ -407,6 +459,19 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ========================================================
      ACTION BUTTONS HANDLERS
      ======================================================== */
+  if (btnRandomizeShayari) {
+    btnRandomizeShayari.addEventListener('click', () => {
+      const name = recipientDisplay.textContent || 'Friend';
+      const age = ageDisplay.textContent || '25';
+      const date = document.getElementById('date').value || new Date().toISOString().split('T')[0];
+      const gender = document.querySelector('input[name="gender"]:checked')?.value || 'Male';
+      const count = cardCountInput.value || '4';
+
+      generateCards({ name, gender, age, date, count });
+      showToast('🔀 Connected fresh random shayaris to posters!');
+    });
+  }
+
   btnCopyLink.addEventListener('click', () => {
     const shareableUrl = window.location.href;
     if (navigator.clipboard && navigator.clipboard.writeText) {
